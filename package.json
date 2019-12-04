@@ -1,0 +1,27 @@
+{
+  "name": "GraphQL-Trivia-App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec babel-node server.js"
+  },
+  "dependencies": {
+    "axios": "*",
+    "core-js": "*",
+    "cors": "*",
+    "regenerator-runtime": "*",
+    "graphql-yoga": "*"
+  },
+  "devDependencies": {
+    "@babel/cli": "*",
+    "@babel/core": "*",
+    "@babel/node": "*",
+    "@babel/preset-env": "*",
+    "nodemon": "*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
