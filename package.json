@@ -11,8 +11,8 @@
     "axios": "*",
     "core-js": "*",
     "cors": "*",
-    "regenerator-runtime": "*",
-    "graphql-yoga": "*"
+    "graphql-yoga": "*",
+    "regenerator-runtime": "*"
   },
   "devDependencies": {
     "@babel/cli": "*",

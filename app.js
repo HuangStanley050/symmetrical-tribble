@@ -1,4 +1,5 @@
-import { GraphQLServer } from "graphql-yoga";
+import { GraphQLServer, express } from "graphql-yoga";
+import path from "path";
 import Query from "./resolvers/Query";
 
 const server = new GraphQLServer({
@@ -7,4 +8,5 @@ const server = new GraphQLServer({
     Query
   }
 });
+
 export default server;
