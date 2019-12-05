@@ -1,0 +1,22 @@
+type Query {
+  trivias(data: TriviaInput): [Trivia!]!
+  hello: String
+}
+
+type Trivia {
+  category: String!
+  difficulty: String!
+  question: String!
+  correctAnswer: String!
+  incorrectAnswers: [IncorrectAnswer!]!
+}
+
+type IncorrectAnswer {
+  wrong: String!
+}
+
+input TriviaInput {
+  category: String!
+  difficulty: String!
+  numberQuestions: Int!
+}
