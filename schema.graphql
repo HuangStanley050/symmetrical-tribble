@@ -7,12 +7,8 @@ type Trivia {
   category: String!
   difficulty: String!
   question: String!
-  correctAnswer: String!
-  incorrectAnswers: [IncorrectAnswer!]!
-}
-
-type IncorrectAnswer {
-  wrong: String!
+  correct_answer: String!
+  incorrect_answers: [String!]!
 }
 
 input TriviaInput {
