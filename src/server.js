@@ -11,7 +11,7 @@ server.express.get("*", (req, res, next) => {
     // Return next() so that the GraphQLServer will handle it
     return next();
   }
-  res.sendFile(path.join(__dirname, "./client/index.html"));
+  res.sendFile(path.join(__dirname, "../client/index.html"));
 });
 
 server.start(opts, () =>
