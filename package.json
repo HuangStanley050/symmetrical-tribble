@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node ./src/server.js"
+    "server": "nodemon --exec babel-node ./src/server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "axios": "*",
@@ -19,6 +21,7 @@
     "@babel/core": "*",
     "@babel/node": "*",
     "@babel/preset-env": "*",
+    "concurrently": "^5.0.0",
     "nodemon": "*"
   },
   "keywords": [],
