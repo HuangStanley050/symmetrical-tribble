@@ -3,17 +3,19 @@ import { GoogleLogin } from "react-google-login";
 import { store } from "../store/store";
 import * as actionType from "../store/actionTypes";
 import { loginOkay, loginFail } from "../store/actions";
+import { Redirect } from "react-router-dom";
 
 const Login = props => {
   const globalState = useContext(store);
   const { dispatch } = globalState;
+  const { isAuth } = globalState.state;
   const googleLoginFail = res => {
-    console.log(res);
+    //console.log(res);
     dispatch(loginFail());
   };
   const googleLoginOkay = res => {
     dispatch(loginOkay());
-    console.log(res.accessToken);
+    //console.log(res.accessToken);
   };
   const loginPageStyle = {
     display: "flex",
@@ -21,6 +23,9 @@ const Login = props => {
     justifyContent: "center",
     height: "90vh"
   };
+  if (isAuth) {
+    return <Redirect to="/trivia" />;
+  }
   return (
     <div style={loginPageStyle}>
       <GoogleLogin
