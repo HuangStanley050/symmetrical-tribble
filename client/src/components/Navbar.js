@@ -13,7 +13,7 @@ const Navbar = props => {
         <Menu.Item
           name="login"
           as={Link}
-          to="/"
+          to="/login"
           active={location.pathname === "/"}
         >
           Login
