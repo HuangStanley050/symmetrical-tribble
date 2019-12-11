@@ -7,10 +7,18 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case "action description":
-        return state;
+      case actionType.LOGIN_FAIL:
+        return {
+          ...state,
+          isAuth: false
+        };
+      case actionType.LOGIN_OKAY:
+        return {
+          ...state,
+          isAuth: true
+        };
       default:
-        throw new Error();
+        return state;
     }
   }, initialState);
 
