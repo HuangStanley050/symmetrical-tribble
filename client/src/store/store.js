@@ -8,6 +8,7 @@ const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case actionType.LOGIN_FAIL:
+        console.log(action);
         return {
           ...state,
           isAuth: false

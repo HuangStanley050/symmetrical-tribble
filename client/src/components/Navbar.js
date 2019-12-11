@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Menu } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
+import { store } from "../store/store";
 
 const Navbar = props => {
   const { location } = props;
+  const globalState = useContext(store);
+  const { isAuth } = globalState.state;
+  console.log("this is from navbar ", isAuth);
   return (
     <Menu style={{ marginBottom: "0" }} size="large" stackable position="right">
       <Menu.Item>
@@ -19,14 +23,16 @@ const Navbar = props => {
           Login
         </Menu.Item>
 
-        <Menu.Item
-          name="photos"
-          as={Link}
-          to="/trivia"
-          active={location.pathname === "/trivia"}
-        >
-          Trivia
-        </Menu.Item>
+        {isAuth ? (
+          <Menu.Item
+            name="photos"
+            as={Link}
+            to="/trivia"
+            active={location.pathname === "/trivia"}
+          >
+            Trivia
+          </Menu.Item>
+        ) : null}
       </Menu.Menu>
     </Menu>
   );
