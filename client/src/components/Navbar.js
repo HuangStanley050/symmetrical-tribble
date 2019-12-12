@@ -14,14 +14,16 @@ const Navbar = props => {
         <img alt="app logo" src="https://react.semantic-ui.com/logo.png" />
       </Menu.Item>
       <Menu.Menu position="right">
-        <Menu.Item
-          name="login"
-          as={Link}
-          to="/login"
-          active={location.pathname === "/"}
-        >
-          Login
-        </Menu.Item>
+        {isAuth ? null : (
+          <Menu.Item
+            name="login"
+            as={Link}
+            to="/login"
+            active={location.pathname === "/"}
+          >
+            Login
+          </Menu.Item>
+        )}
 
         {isAuth ? (
           <Menu.Item
