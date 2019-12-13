@@ -30,7 +30,7 @@ const Login = props => {
     <div style={loginPageStyle}>
       <GoogleLogin
         clientId={process.env.REACT_APP_API_KEY}
-        buttonText="Login"
+        buttonText="Login with your google email"
         onSuccess={googleLoginOkay}
         onFailure={googleLoginFail}
         cookiePolicy={"single_host_origin"}

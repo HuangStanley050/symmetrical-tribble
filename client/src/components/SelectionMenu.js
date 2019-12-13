@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Dropdown } from "semantic-ui-react";
+import { Button, Form, Dropdown } from "semantic-ui-react";
 
 const difficulty = [
   { key: "Difficult", text: "Difficult", value: "difficult" },
@@ -68,33 +68,40 @@ const SelectionMenu = props => {
 
     setTrivia({ ...trivia, [name]: value });
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(trivia);
+  };
   return (
-    <div style={formStyle}>
-      <Dropdown
-        name="difficulty"
-        onChange={handleChange}
-        placeholder="Select Difficulty"
-        fluid
-        selection
-        options={difficulty}
-      />
-      <Dropdown
-        name="category"
-        onChange={handleChange}
-        placeholder="Select Category"
-        fluid
-        selection
-        options={category}
-      />
-      <Dropdown
-        name="questions"
-        onChange={handleChange}
-        placeholder="Number of Questions"
-        fluid
-        selection
-        options={numberQuestions}
-      />
-    </div>
+    <Form onSubmit={handleSubmit}>
+      <div style={formStyle}>
+        <Dropdown
+          name="difficulty"
+          onChange={handleChange}
+          placeholder="Select Difficulty"
+          fluid
+          selection
+          options={difficulty}
+        />
+        <Dropdown
+          name="category"
+          onChange={handleChange}
+          placeholder="Select Category"
+          fluid
+          selection
+          options={category}
+        />
+        <Dropdown
+          name="questions"
+          onChange={handleChange}
+          placeholder="Number of Questions"
+          fluid
+          selection
+          options={numberQuestions}
+        />
+        <Button type="submit">Submit</Button>
+      </div>
+    </Form>
   );
 };
 
