@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Button, Form, Dropdown } from "semantic-ui-react";
 
 const difficulty = [
@@ -68,9 +69,33 @@ const SelectionMenu = props => {
 
     setTrivia({ ...trivia, [name]: value });
   };
+  const getTriviaData = async data => {
+    const url = process.env.REACT_APP_SERVER_URL;
+
+    let result = await axios.post(
+      url,
+      {
+        query: `
+        query {
+          hello
+        }
+      `
+      },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    console.log(result.data);
+  };
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(trivia);
+    if (trivia.questions === 0) {
+      alert("You must select number of questions");
+      return;
+    }
+    getTriviaData(trivia);
   };
   return (
     <Form onSubmit={handleSubmit}>
