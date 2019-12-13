@@ -7,7 +7,7 @@ const Navbar = props => {
   const { location } = props;
   const globalState = useContext(store);
   const { isAuth } = globalState.state;
-  console.log("this is from navbar ", isAuth);
+  //console.log("this is from navbar ", isAuth);
   return (
     <Menu style={{ marginBottom: "0" }} size="large" stackable position="right">
       <Menu.Item>
