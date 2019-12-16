@@ -100,7 +100,7 @@ const SelectionMenu = props => {
         }
       }
     );
-    console.log(result.data.data.trivias);
+    //console.log(result.data.data.trivias);
     dispatch({
       type: actionType.SET_TRIVIAS,
       payload: result.data.data.trivias
