@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { store } from "../store/store";
+import * as actionType from "../store/actionTypes";
 import { Button, Form, Dropdown } from "semantic-ui-react";
 
 const difficulty = [
@@ -53,6 +55,8 @@ const category = [
 ];
 
 const SelectionMenu = props => {
+  const globalState = useContext(store);
+  const { dispatch } = globalState;
   const [trivia, setTrivia] = useState({
     difficulty: "",
     category: "",
@@ -71,7 +75,7 @@ const SelectionMenu = props => {
   };
   const getTriviaData = async data => {
     const url = process.env.REACT_APP_SERVER_URL;
-    console.log(data);
+
     let result = await axios.post(
       url,
       {
@@ -96,7 +100,11 @@ const SelectionMenu = props => {
         }
       }
     );
-    console.log(result.data);
+    console.log(result.data.data.trivias);
+    dispatch({
+      type: actionType.SET_TRIVIAS,
+      payload: result.data.data.trivias
+    });
   };
   const handleSubmit = e => {
     e.preventDefault();
