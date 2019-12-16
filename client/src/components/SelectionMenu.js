@@ -71,13 +71,22 @@ const SelectionMenu = props => {
   };
   const getTriviaData = async data => {
     const url = process.env.REACT_APP_SERVER_URL;
-
+    console.log(data);
     let result = await axios.post(
       url,
       {
         query: `
         query {
-          hello
+          trivias(data:{
+            category:"${data.category}",
+            difficulty:"${data.difficulty}",
+            numberQuestions:${data.questions},
+          }) {
+            category
+            question
+            correct_answer
+            incorrect_answers
+          }
         }
       `
       },
