@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import * as actionType from "./actionTypes";
-const initialState = { isAuth: false, trivias: null };
+const initialState = { isAuth: true, trivias: [] };
 const store = createContext(initialState);
 const { Provider } = store;
 
