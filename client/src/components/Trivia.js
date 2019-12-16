@@ -5,7 +5,7 @@ import Questions from "./Questions";
 
 const TriviaPage = props => {
   return (
-    <Container style={{ marginTop: "2rem" }}>
+    <Container style={{ margin: "2rem 0" }}>
       <h1 style={{ textAlign: "center" }}>Trivia Page</h1>
       <SelectionMenu />
       <Questions />
