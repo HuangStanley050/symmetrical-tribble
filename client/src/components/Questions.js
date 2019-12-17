@@ -28,13 +28,18 @@ const Questions = props => {
     });
     setAnswers(tempArray);
   }, [trivias]);
+  const handleChange = (e, { question, value }) => {
+    console.log("Here is the question: ", question);
+    console.log("Here is the selected answer: ", value);
+  };
   const renderQuestions = answers => {
     //console.log(answers);
-    console.log("executing renderQuestions");
-    answers.map((answer, index) => {
-      console.log(answer);
+    //console.log("executing renderQuestions");
+    return answers.map((answer, index) => {
+      //console.log(answer);
       return (
         <Question
+          handleChange={handleChange}
           key={answer.question}
           question={answer.question}
           data={answer.shuffled}

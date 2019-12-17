@@ -29,7 +29,7 @@ const category = {
 const Query = {
   hello: () => "Hello world",
   trivias: async (parents, args, ctx, info) => {
-    console.log(args.data);
+    //console.log(args.data);
     const result = await axios.get(
       `${apiRoute}amount=${args.data.numberQuestions}&category=${
         category[args.data.category]

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Radio, Form } from "semantic-ui-react";
 
 const decodeHTML = html => {
@@ -8,14 +8,6 @@ const decodeHTML = html => {
 };
 
 const Question = props => {
-  const [selectedAnswer, setAnswer] = useState({
-    selected: "",
-    rightAnswer: props.rightAnswer
-  });
-  const handleChange = (e, { value }) => {
-    setAnswer({ ...selectedAnswer, selected: value });
-  };
-  console.log(props);
   return (
     <Form>
       <Form.Field style={{ margin: "1rem 0" }}>
@@ -25,11 +17,12 @@ const Question = props => {
         return (
           <Form.Field key={index}>
             <Radio
-              onChange={handleChange}
-              checked={selectedAnswer.selected === answer}
+              onChange={props.handleChange}
+              // checked={selectedAnswer.selected === answer}
               label={answer}
               name="radioGroup"
               value={answer}
+              question={props.question}
             />
           </Form.Field>
         );
