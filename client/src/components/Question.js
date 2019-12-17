@@ -15,7 +15,7 @@ const Question = props => {
   const handleChange = (e, { value }) => {
     setAnswer({ ...selectedAnswer, selected: value });
   };
-
+  console.log(props);
   return (
     <Form>
       <Form.Field style={{ margin: "1rem 0" }}>
