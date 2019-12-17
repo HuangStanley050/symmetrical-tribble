@@ -8,10 +8,13 @@ const decodeHTML = html => {
 };
 
 const Question = props => {
-  const [selectedAnswer, setAnswer] = useState("");
+  const [selectedAnswer, setAnswer] = useState({
+    selected: "",
+    rightAnswer: props.rightAnswer
+  });
   const handleChange = (e, { value }) => {
-    console.log(value);
-    setAnswer(value);
+    setAnswer({ ...selectedAnswer, selected: value });
+    console.log(selectedAnswer);
   };
 
   return (
@@ -24,7 +27,7 @@ const Question = props => {
           <Form.Field key={index}>
             <Radio
               onChange={handleChange}
-              checked={selectedAnswer === answer}
+              checked={selectedAnswer.selected === answer}
               label={answer}
               name="radioGroup"
               value={answer}
