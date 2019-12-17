@@ -1,22 +1,24 @@
 import React, { createContext, useReducer } from "react";
 import * as actionType from "./actionTypes";
-const initialState = { isAuth: false, trivias: [], numberRights: 0 };
+const initialState = { isAuth: true, trivias: [], numberRights: 0 };
 const store = createContext(initialState);
 const { Provider } = store;
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case actionType.SET_RIGHT_POINT:
-        console.log("answer is right");
-        return {
-          ...state
-        };
-      case actionType.SET_WRONG_POINT:
-        console.log("answer is wrong");
-        return {
-          ...state
-        };
+      // case actionType.SET_RIGHT_POINT:
+      //   console.log("answer is right");
+      //   return {
+      //     ...state,
+      //     numberRights: (state.numberRights += 1)
+      //   };
+      // case actionType.SET_WRONG_POINT:
+      //   console.log("answer is wrong");
+      //   return {
+      //     ...state,
+      //     numberRights: (state.numberRights -= 1)
+      //   };
       case actionType.LOGOUT:
         return {
           ...state,
