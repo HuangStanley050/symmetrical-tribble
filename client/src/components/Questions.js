@@ -10,8 +10,8 @@ const Questions = props => {
     <div style={{ width: "80%", margin: "0 auto" }}>
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Questions:</h1>
       {trivias.length !== 0
-        ? trivias.map(trivia => (
-            <Question key={trivia.question} data={trivia} />
+        ? trivias.map((trivia, index) => (
+            <Question key={trivia.question} data={trivia} number={index} />
           ))
         : null}
     </div>
