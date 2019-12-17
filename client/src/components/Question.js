@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Radio, Form } from "semantic-ui-react";
+import { store } from "../store/store";
+import * as actionType from "../store/actionTypes";
 
 const decodeHTML = html => {
   var txt = document.createElement("textarea");
@@ -8,13 +10,19 @@ const decodeHTML = html => {
 };
 
 const Question = props => {
+  const globalState = useContext(store);
+  const { dispatch } = globalState;
   const [selectedAnswer, setAnswer] = useState({
     selected: "",
     rightAnswer: props.rightAnswer
   });
   const handleChange = (e, { value }) => {
     setAnswer({ ...selectedAnswer, selected: value });
-    console.log(selectedAnswer);
+    if (selectedAnswer.selected === selectedAnswer.rightAnswer) {
+      dispatch({ type: actionType.SET_RIGHT_POINT });
+    } else {
+      dispatch({ type: actionType.SET_WRONG_POINT });
+    }
   };
 
   return (
