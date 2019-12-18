@@ -36,7 +36,7 @@ const Query = {
       }&difficulty=${args.data.difficulty}`
     );
 
-    console.log(result.data);
+    //console.log(result.data);
     return result.data.results;
   }
 };

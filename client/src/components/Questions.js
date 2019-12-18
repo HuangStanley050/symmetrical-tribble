@@ -14,6 +14,7 @@ function shuffle(a) {
 const Questions = props => {
   const globalState = useContext(store);
   const [answers, setAnswers] = useState([]);
+  const [score, setScore] = useState(0);
   const { trivias } = globalState.state;
 
   useEffect(() => {
@@ -55,19 +56,28 @@ const Questions = props => {
   };
 
   const calculateScore = () => {
-    console.log("calculating score");
     let score = 0;
     answers.forEach(answer => {
-      if (answer.correct_answer === answer.selected) {
+      if (answer.rightAnswer === answer.selected) {
         score++;
       }
     });
-    console.log("Total score: ", score);
+    console.log(score);
+    setScore(score);
+  };
+
+  const renderScore = () => {
+    return (
+      <h2 style={{ color: "red", textAlign: "center" }}>
+        {score} / {answers.length}
+      </h2>
+    );
   };
 
   return (
     <div style={{ width: "80%", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Questions:</h1>
+      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Questions: </h1>
+      {renderScore()}
       {answers.length !== 0 ? renderQuestions(answers) : null}
       {answers.length !== 0 ? (
         <Grid>
