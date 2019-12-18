@@ -32,6 +32,9 @@ const Questions = props => {
   }, [trivias]);
 
   const handleChange = (e, { question, value }) => {
+    console.log("radio button change");
+    console.log(question);
+    console.log(value);
     let tempAnswers = [...answers];
     let indexToReplace = tempAnswers.findIndex(answer => {
       return answer.question === question;
@@ -45,6 +48,7 @@ const Questions = props => {
     return answers.map((answer, index) => {
       return (
         <Question
+          selection={answer.selected}
           handleChange={handleChange}
           key={answer.question}
           question={answer.question}
