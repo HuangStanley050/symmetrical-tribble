@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Button, Grid } from "semantic-ui-react";
 import Question from "./Question";
 import { store } from "../store/store";
 
@@ -28,22 +29,19 @@ const Questions = props => {
     });
     setAnswers(tempArray);
   }, [trivias]);
+
   const handleChange = (e, { question, value }) => {
-    // console.log("Here is the question: ", question);
-    // console.log("Here is the selected answer: ", value);
     let tempAnswers = [...answers];
     let indexToReplace = tempAnswers.findIndex(answer => {
       return answer.question === question;
     });
     let newAnswer = { ...tempAnswers[indexToReplace], selected: value };
     tempAnswers.splice(indexToReplace, 1, newAnswer);
-    console.log(tempAnswers);
+    setAnswers([...tempAnswers]);
   };
+
   const renderQuestions = answers => {
-    //console.log(answers);
-    //console.log("executing renderQuestions");
     return answers.map((answer, index) => {
-      //console.log(answer);
       return (
         <Question
           handleChange={handleChange}
@@ -55,31 +53,31 @@ const Questions = props => {
       );
     });
   };
+
+  const calculateScore = () => {
+    console.log("calculating score");
+    let score = 0;
+    answers.forEach(answer => {
+      if (answer.correct_answer === answer.selected) {
+        score++;
+      }
+    });
+    console.log("Total score: ", score);
+  };
+
   return (
     <div style={{ width: "80%", margin: "0 auto" }}>
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Questions:</h1>
       {answers.length !== 0 ? renderQuestions(answers) : null}
+      {answers.length !== 0 ? (
+        <Grid>
+          <Grid.Column textAlign="center">
+            <Button onClick={calculateScore}>Submit Answer</Button>
+          </Grid.Column>
+        </Grid>
+      ) : null}
     </div>
   );
 };
 
 export default Questions;
-
-/*
-
-{trivias.length !== 0
-  ? trivias.map((trivia, index) => {
-      let answers = [...trivia.incorrect_answers, trivia.correct_answer];
-      answers = shuffle(answers);
-      return (
-        <Question
-          key={trivia.question}
-          question={trivia.question}
-          rightAnswer={trivia.correct_answer}
-          data={answers}
-          number={index}
-        />
-      );
-    })
-  : null}
- */

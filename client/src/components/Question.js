@@ -18,7 +18,7 @@ const Question = props => {
           <Form.Field key={index}>
             <Radio
               onChange={props.handleChange}
-              // checked={selectedAnswer.selected === answer}
+              //checked={selectedAnswer.selected === answer}
               label={answer}
               name="radioGroup"
               value={answer}
