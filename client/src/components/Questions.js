@@ -84,7 +84,7 @@ const Questions = props => {
       {renderScore()}
       {answers.length !== 0 ? renderQuestions(answers) : null}
       {answers.length !== 0 ? (
-        <Grid>
+        <Grid style={{ marginTop: "2rem" }}>
           <Grid.Column textAlign="center">
             <Button onClick={calculateScore}>Submit Answer</Button>
           </Grid.Column>
