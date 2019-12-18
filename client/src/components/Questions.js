@@ -29,8 +29,15 @@ const Questions = props => {
     setAnswers(tempArray);
   }, [trivias]);
   const handleChange = (e, { question, value }) => {
-    console.log("Here is the question: ", question);
-    console.log("Here is the selected answer: ", value);
+    // console.log("Here is the question: ", question);
+    // console.log("Here is the selected answer: ", value);
+    let tempAnswers = [...answers];
+    let indexToReplace = tempAnswers.findIndex(answer => {
+      return answer.question === question;
+    });
+    let newAnswer = { ...tempAnswers[indexToReplace], selected: value };
+    tempAnswers.splice(indexToReplace, 1, newAnswer);
+    console.log(tempAnswers);
   };
   const renderQuestions = answers => {
     //console.log(answers);
