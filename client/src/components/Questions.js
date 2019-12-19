@@ -15,6 +15,7 @@ const Questions = props => {
   const globalState = useContext(store);
   const [answers, setAnswers] = useState([]);
   const [score, setScore] = useState(0);
+  const [submitted, toggleSubmit] = useState(false);
   const { trivias } = globalState.state;
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const Questions = props => {
     return answers.map((answer, index) => {
       return (
         <Question
+          submitted={submitted ? true : false}
           selection={answer.selected}
           handleChange={handleChange}
           key={answer.question}
@@ -68,6 +70,7 @@ const Questions = props => {
     });
     console.log(score);
     setScore(score);
+    toggleSubmit(!submitted);
   };
 
   const renderScore = () => {

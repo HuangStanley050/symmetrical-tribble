@@ -23,11 +23,12 @@ const Question = props => {
               return (
                 <Form.Field key={index}>
                   <Radio
+                    disabled={props.submitted}
                     onChange={props.handleChange}
                     checked={props.selection === answer}
                     label={answer}
                     name="radioGroup"
-                    value={answer}
+                    value={decodeHTML(answer)}
                     question={props.question}
                   />
                 </Form.Field>
