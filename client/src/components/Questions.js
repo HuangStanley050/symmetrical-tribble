@@ -16,6 +16,7 @@ const Questions = props => {
   const [answers, setAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [submitted, toggleSubmit] = useState(false);
+  const [incorrectAnswers, setIncorrectAnswers] = useState([]);
   const { trivias } = globalState.state;
 
   useEffect(() => {
@@ -58,6 +59,7 @@ const Questions = props => {
     return answers.map((answer, index) => {
       return (
         <Question
+          incorrectAnswers={incorrectAnswers}
           submitted={submitted ? true : false}
           selection={answer.selected}
           handleChange={handleChange}
@@ -72,12 +74,15 @@ const Questions = props => {
 
   const calculateScore = () => {
     let score = 0;
+    let wrongAnswers = [];
     answers.forEach(answer => {
       if (answer.rightAnswer === answer.selected) {
         score++;
+      } else {
+        wrongAnswers.push(answer.selected);
       }
     });
-    console.log(score);
+    setIncorrectAnswers(wrongAnswers);
     setScore(score);
     toggleSubmit(!submitted);
   };

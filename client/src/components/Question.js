@@ -8,6 +8,7 @@ const decodeHTML = html => {
 };
 
 const Question = props => {
+  console.log("incorrect answers are: ", props.incorrectAnswers);
   return (
     <Form style={{ border: "1px black solid", marginBottom: "1rem" }}>
       <Form.Field style={{ margin: "1rem 0" }}>
