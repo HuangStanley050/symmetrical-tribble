@@ -33,6 +33,7 @@ const Questions = props => {
     if (submitted) {
       toggleSubmit(false);
     }
+
     setAnswers(tempArray);
   }, [trivias, submitted]);
 

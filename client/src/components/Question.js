@@ -22,7 +22,14 @@ const Question = props => {
           <Grid.Column width={6}>
             {props.data.map((answer, index) => {
               return (
-                <Form.Field key={index}>
+                <Form.Field
+                  key={index}
+                  style={{
+                    background: props.incorrectAnswers.includes(answer)
+                      ? "red"
+                      : null
+                  }}
+                >
                   <Radio
                     disabled={props.submitted}
                     onChange={props.handleChange}
