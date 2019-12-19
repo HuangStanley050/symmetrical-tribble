@@ -29,13 +29,22 @@ const Questions = props => {
         shuffled: shuffle([...trivia.incorrect_answers, trivia.correct_answer])
       };
     });
+    if (submitted) {
+      toggleSubmit(false);
+    }
     setAnswers(tempArray);
-  }, [trivias]);
+  }, [trivias, submitted]);
+
+  useEffect(() => {
+    // console.log("submitted!!");
+    // console.log(submitted);
+    if (!submitted) {
+      return;
+    }
+    toggleSubmit(true);
+  }, [submitted]);
 
   const handleChange = (e, { question, value }) => {
-    console.log("radio button change");
-    console.log(question);
-    console.log(value);
     let tempAnswers = [...answers];
     let indexToReplace = tempAnswers.findIndex(answer => {
       return answer.question === question;
