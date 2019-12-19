@@ -1,3 +1,5 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import { GraphQLServer, express } from "graphql-yoga";
 import path from "path";
 import Query from "./resolvers/Query";

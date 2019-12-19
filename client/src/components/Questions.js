@@ -38,8 +38,6 @@ const Questions = props => {
   }, [trivias, submitted]);
 
   useEffect(() => {
-    // console.log("submitted!!");
-    // console.log(submitted);
     if (!submitted) {
       return;
     }
